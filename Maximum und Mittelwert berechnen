@@ -1,0 +1,46 @@
+// PAD1 - Praktikum 2
+// Aufgabe 8
+// 762199
+
+#include <iostream>
+
+using namespace std;
+
+int main()
+{
+    double Eingabe = 1;     //User Eingabe
+    double Ergebnis = 0;    //Ergebnis
+    double max = 0;        //Zwischenspeicher für's Maximum
+    int counter = 0;        //Zählt die eingegebenen Zahlen, um sie später zu teilen
+
+    cout << "Bitte geben Sie beliebig viele Zahlen ein," << endl << "es wird dann der Mittlwert und das Maximum berechnet." << endl
+         << "Falls Sie eine negative Zahl eingeben," << endl <<  "wird diese automatisch in eine positive Zahl umgewandelt." << endl
+         << "Tippen Sie eine '0' ein, falls Sie fertig mit der Eingabe sind." << endl << endl;
+
+    while (Eingabe >= 1)    //Größer 1, da "0" unsere Abbruchbedingung ist
+    {
+        cin >> Eingabe;
+
+        if (Eingabe > max) //Eingabe wird kopiert, um sie mit den darauf folgenden Eingaben zu vergleichen und zu überschreiben
+        {
+            max = Eingabe;
+        }
+
+        if (Eingabe < 0)    //Automatische Umwandlung von negativen Zahlen
+        {
+            Eingabe = Eingabe * (-1);
+        }
+
+        counter++;          //Inkrement, zählt die Anzahl der Eingaben, die für die Berechnung vom MW nötig sind mit
+
+        Ergebnis = Ergebnis + Eingabe;    //Dient dazu, um alle eingegebenen Zahlen zu addieren (Mittelwert)
+    }
+
+    counter = counter - 1;    //Die letzte Eingabe wird die '0' sein, da der Counter dennoch hochzählt, wird dieser um 1 reduziert, um den Wert nicht zu verfälschen
+
+    cout << endl;
+    cout << "Mittelwert: " << Ergebnis/counter << endl;
+    cout << "Maximum: " << max << endl;
+
+    return 0;
+}
